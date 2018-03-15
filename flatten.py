@@ -21,23 +21,26 @@ def flat(lst):
             else:
                 flat.append(i)
         return flat
-
+    list_dict = {}
+    depth = 1
     while any([isinstance(i,list) for i in lst]): #check if list is flat
  
         lst = flatten(lst)
-    return lst
+        list_dict[depth]=lst
+        depth +=1
+    return lst,list_dict
 
 l = [2, 19, 10, ['a', 'b', ["nth",["ith"]]]]
 
 
 import collections
 
-def flatten(l):
-    for el in l:
-        if isinstance(el, collections.Iterable) and not isinstance(el, (str, bytes)):
-            yield from flatten(el)
-        else:
-            yield el
+#def flatten(l):
+#    for el in l:
+#        if isinstance(el, collections.Iterable) and not isinstance(el, (str, bytes)):
+#            yield from flatten(el)
+#        else:
+#            yield el
 
 
 #l = [2, 19, 10, ['a', 'b', ["nth",["ith"]]]]            
